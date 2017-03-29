@@ -46,26 +46,155 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 		// }
 			
 		
-	var barChartData = {
-			labels : ["Male","February","March","April","May","June","July"],
+	var DisOfBlueCollerJobSeeker = {
+			labels : ["Dhaka","Bogura","Shunamgonj"],
 			datasets : [
-				{
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,0.8)",
-					highlightFill: "rgba(220,220,220,0.75)",
-					highlightStroke: "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-				},
-				{
+				{	label: "Female",
 					fillColor : "rgba(48, 164, 255, 0.2)",
 					strokeColor : "rgba(48, 164, 255, 0.8)",
 					highlightFill : "rgba(48, 164, 255, 0.75)",
 					highlightStroke : "rgba(48, 164, 255, 1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				},
+				{	label: "Male",
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,0.8)",
+					highlightFill: "rgba(220,220,220,0.75)",
+					highlightStroke: "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 				}
 			]
 	
 		}
+
+			var varMaritalStatusMaleFemaleData = {
+			labels : ["Married","Unmarried"],
+			datasets : [
+				
+				{	
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 0.8)",
+					highlightFill : "rgba(48, 164, 255, 0.75)",
+					highlightStroke : "rgba(48, 164, 255, 1)",
+					data : [randomScalingFactor(),randomScalingFactor()]
+				},
+				{	
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,0.8)",
+					highlightFill: "rgba(220,220,220,0.75)",
+					highlightStroke: "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor()]
+				}
+			]
+	
+		}
+
+
+//three data area graph
+
+var dataThreearea = {
+    labels: ["40+yr", "35-39yr", "30-34yr", "25-29yr", "20-24yr", "15-19yr"],
+    datasets: [{
+        label: "Bogura",
+        fillColor: "rgba(151,187,205,0.5)",
+        strokeColor: "rgba(151,187,205,0.8)",
+        highlightFill: "rgba(151,187,205,0.75)",
+        highlightStroke: "rgba(151,187,205,1)",
+        data: [28, 48, 40, 19, 86, 27]
+    },
+    {
+        label: "Dhaka",
+        fillColor: "rgba(220,220,220,0.5)",
+        strokeColor: "rgba(220,220,220,0.8)",
+        highlightFill: "rgba(220,220,220,0.75)",
+        highlightStroke: "rgba(220,220,220,1)",
+        data: [65, 59, 80, 81, 56, 55]
+    }]
+};
+
+var chart04 = document.getElementById("chart-agedist").getContext("2d");
+var myBarChart = new Chart(chart04).Bar(dataThreearea);
+
+
+// inserting the new dataset after 3 seconds
+setTimeout(function() {
+    var myNewDataset = {
+        label: "Shunamgonj",
+        fillColor: "rgba(187,205,151,0.5)",
+        strokeColor: "rgba(187,205,151,0.8)",
+        highlightFill: "rgba(187,205,151,0.75)",
+        highlightStroke: "rgba(187,205,151,1)",
+        data: [48, 40, 19, 86, 27, 90]
+    }
+
+    var bars = []
+    myNewDataset.data.forEach(function (value, i) {
+        bars.push(new myBarChart.BarClass({
+            value: value,
+            label: myBarChart.datasets[0].bars[i].label,
+            x: myBarChart.scale.calculateBarX(myBarChart.datasets.length + 1, myBarChart.datasets.length, i),
+            y: myBarChart.scale.endPoint,
+            width: myBarChart.scale.calculateBarWidth(myBarChart.datasets.length + 1),
+            base: myBarChart.scale.endPoint,
+            strokeColor: myNewDataset.strokeColor,
+            fillColor: myNewDataset.fillColor
+        }))
+    })
+
+    myBarChart.datasets.push({
+        bars: bars
+    })
+
+    myBarChart.update();
+}, 500);
+
+
+
+
+
+
+//three area graph
+
+//area chart starts 
+	var datasetforagedistarea = {
+  labels: ["40+yr", "35-39yr", "30-34yr", "25-29yr", "20-24yr", "15-19yr"],
+  datasets: [{
+    label: "Dhaka",
+    fillColor: "rgba(220,220,220,0.2)",
+    strokeColor: "rgba(220,220,220,1)",
+    pointColor: "rgba(220,220,220,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(220,220,220,1)",
+    data: [65, 59, 80, 81, 56, 55]
+  }, {
+    label: "Bogura",
+    fillColor: "rgba(151,187,205,0.2)",
+    strokeColor: "rgba(151,187,205,1)",
+    pointColor: "rgba(151,187,205,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(151,187,205,1)",
+    data: [28, 48, 40, 19, 86, 27]
+  }]
+};
+
+var optionsforagedistarea = {
+  bezierCurve: false,
+  animation: true,
+  animationEasing: "easeOutQuart",
+  showScale: false,
+  tooltipEvents: ["mousemove", "touchstart", "touchmove"],
+  tooltipCornerRadius: 3,
+  pointDot : true,
+  pointDotRadius : 4,
+  datasetFill : true,
+  scaleShowLine : true,
+  animationEasing : "easeOutBounce",
+  animateRotate : true,
+  animateScale : true,
+};
+
 
 	var pieData = [
 				{
@@ -96,16 +225,59 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 			];
 			var pieData2 = [
 				{
-					value: 300,
+					value: randomScalingFactor(),
 					color:"#30a5ff",
 					highlight: "#62b9fb",
 					label: "Male"
 				},
 				{
-					value: 50,
+					value: randomScalingFactor(),
 					color: "#ffb53e",
 					highlight: "#fac878",
 					label: "Female"
+				}];
+
+					var pieData3 = [
+				{
+					value: randomScalingFactor(),
+					color:"#BFBFBF",
+					highlight: "#D6D6D6",
+					label: "Illiterate"
+				},{
+					value: randomScalingFactor(),
+					color:"#5998C5",
+					highlight: "#2381C4",
+					label: "Upto Class 5"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#CFFFB0",
+					highlight: "#ADFF77",
+					label: "SSC"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#E03616",
+					highlight: "#E05F45",
+					label: "HSC"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#FFF689",
+					highlight: "#FFF9BA",
+					label: "Diploma"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#23C4BE",
+					highlight: "#52C4C0",
+					label: "Degree"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#8A1CDD",
+					highlight: "#8A1CDD",
+					label: "Masters"
 				}];
 			
 	var doughnutData = [
@@ -135,26 +307,196 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					}
 	
 				];
+				// Radar Chart Options
+var radarOptions = {
+				
+	//Boolean - If we show the scale above the chart data			
+	scaleOverlay : false,
+	
+	//Boolean - If we want to override with a hard coded scale
+	scaleOverride : false,
+	
+	//** Required if scaleOverride is true **
+	//Number - The number of steps in a hard coded scale
+	scaleSteps : null,
+	//Number - The value jump in the hard coded scale
+	scaleStepWidth : null,
+	//Number - The centre starting value
+	scaleStartValue : null,
+	
+	//Boolean - Whether to show lines for each scale point
+	scaleShowLine : true,
+
+	//String - Colour of the scale line	
+	scaleLineColor : "#999",
+	
+	//Number - Pixel width of the scale line	
+	scaleLineWidth : 1,
+
+	//Boolean - Whether to show labels on the scale	
+	scaleShowLabels : false,
+	
+	//Interpolated JS string - can access value
+	scaleLabel : "<%=value%>",
+	
+	//String - Scale label font declaration for the scale label
+	scaleFontFamily : "'Arial'",
+	
+	//Number - Scale label font size in pixels	
+	scaleFontSize : 12,
+	
+	//String - Scale label font weight style	
+	scaleFontStyle : "normal",
+	
+	//String - Scale label font colour	
+	scaleFontColor : "#666",
+	
+	//Boolean - Show a backdrop to the scale label
+	scaleShowLabelBackdrop : true,
+	
+	//String - The colour of the label backdrop	
+	scaleBackdropColor : "#000",
+	
+	//Number - The backdrop padding above & below the label in pixels
+	scaleBackdropPaddingY : 2,
+	
+	//Number - The backdrop padding to the side of the label in pixels	
+	scaleBackdropPaddingX : 2,
+	
+	//Boolean - Whether we show the angle lines out of the radar
+	angleShowLineOut : true,
+	
+	//String - Colour of the angle line
+	angleLineColor : "rgba(255,255,255,0.3)",
+	
+	//Number - Pixel width of the angle line
+	angleLineWidth : 1,			
+	
+	//String - Point label font declaration
+	pointLabelFontFamily : "'Arial'",
+	
+	//String - Point label font weight
+	pointLabelFontStyle : "normal",
+	
+	//Number - Point label font size in pixels	
+	pointLabelFontSize : 12,
+	
+	//String - Point label font colour	
+	pointLabelFontColor : "#777",
+	
+	//Boolean - Whether to show a dot for each point
+	pointDot : true,
+	
+	//Number - Radius of each point dot in pixels
+	pointDotRadius : 3,
+	
+	//Number - Pixel width of point dot stroke
+	pointDotStrokeWidth : 1,
+	
+	//Boolean - Whether to show a stroke for datasets
+	datasetStroke : true,
+	
+	//Number - Pixel width of dataset stroke
+	datasetStrokeWidth : 1,
+	
+	//Boolean - Whether to fill the dataset with a colour
+	datasetFill : true,
+	
+	//Boolean - Whether to animate the chart
+	animation : true,
+
+	//Number - Number of animation steps
+	animationSteps : 60,
+	
+	//String - Animation easing effect
+	animationEasing : "easeOutQuart",
+
+	//Function - Fires when the animation is complete
+	onAnimationComplete : null
+	
+}
+	var radarData = {
+	labels : ["January","February","March","April","May","June","July"],
+	datasets : [
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,1)",
+			data : [65,59,90,81,56,55,40]
+		},
+		{
+			fillColor : "rgba(151,187,205,0.5)",
+			strokeColor : "rgba(151,187,205,1)",
+			data : [28,48,40,19,96,27,100]
+		}
+	]
+}
+
+
+
+
 
 window.onload = function(){
-	var chart1 = document.getElementById("line-chart").getContext("2d");
+
+
+	
+
+	var chart01 = document.getElementById("bar-chart").getContext("2d");
+	window.myBar = new Chart(chart01).Bar(DisOfBlueCollerJobSeeker, {
+		responsive : true
+	}); //this is chart 1 {respondent page}
+
+	var chart02 = document.getElementById("pie-chartforGender").getContext("2d");
+	window.myPie = new Chart(chart02).Pie(pieData2, {responsive : true
+	}); //this is chart 2 {respondent page}
+
+
+	var chart03 = document.getElementById("bar-chartMaritialStatus").getContext("2d");
+	window.myBar = new Chart(chart03).Bar(varMaritalStatusMaleFemaleData, {
+		responsive : true
+	}); //this is chart 3 {respondent page}
+
+	//Get the context of the Radar Chart canvas element we want to select
+
+	//from here
+	// var chart04 = document.getElementById("bar-chartAgeDistribution").getContext("2d");
+
+	// var myLineChart = new Chart(chart04).Line(datasetforagedistarea, optionsforagedistarea);
+
+	//till here bar area graph
+
+
+	//chart04 is before onload due to three dataset see top codes named chart04 var
+
+
+	var chart05 = document.getElementById("pie-chartforEdu").getContext("2d");
+	window.myPie = new Chart(chart05).Pie(pieData3, {responsive : true
+	}); //this is chart 2 {respondent page}
+
+
+
+
+
+	//from here
+	var ctx = document.getElementById("radarChart").getContext("2d");
+
+// Create the Radar Chart
+	var myRadarChart = new Chart(ctx).Radar(radarData, radarOptions);
+
+	//till here radar chart
+
+	var chart3 = document.getElementById("doughnut-chart").getContext("2d");
+	window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {responsive : true
+	});
+	var chart4 = document.getElementById("pie-chart").getContext("2d");
+	window.myPie = new Chart(chart4).Pie(pieData, {responsive : true
+	});
+
+		var chart1 = document.getElementById("line-chart").getContext("2d");
 	window.myLine = new Chart(chart1).Line(lineChartData, {
 		responsive: true
 	});
 	
 
-	// var chart2 = document.getElementById("bar-chart").getContext("2d");
-	// window.myBar = new Chart(chart2).Bar(barChartData, {
-	// 	responsive : true
-	// });
-	// var chart3 = document.getElementById("doughnut-chart").getContext("2d");
-	// window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {responsive : true
-	// });
-	// var chart4 = document.getElementById("pie-chart").getContext("2d");
-	// window.myPie = new Chart(chart4).Pie(pieData, {responsive : true
-	// });
-
-	var respondentByGenderVar = document.getElementById("piechartsMF").getContext("2d");
-	window.myPie = new Chart (respondentByGenderVar).Pie(pieData2, {responsive: true});
+	
 	
 };

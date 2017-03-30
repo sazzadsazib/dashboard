@@ -67,6 +67,34 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 	
 		}
 
+		var jobstatusData = {
+			labels : ["Employed","Self-Employed","Unemployed"],
+			datasets : [
+				{	
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 0.8)",
+					highlightFill : "rgba(48, 164, 255, 0.75)",
+					highlightStroke : "rgba(48, 164, 255, 1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				}
+			]
+	
+		}
+
+		var priorApplyJobData = {
+			labels : ["Working Hr","Salary","Security","WorkPlace Location","No Of People Recruited","Work Enviroment","Yearly Bonus","Other Facility","How Many Days Leave","Nature Of Job","At What date Salary is Paid","Amount Of OverTime"],
+			datasets : [
+				{	
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor : "rgba(48, 164, 255, 0.8)",
+					highlightFill : "rgba(48, 164, 255, 0.75)",
+					highlightStroke : "rgba(48, 164, 255, 1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				}
+			]
+	
+		}
+
 			var varMaritalStatusMaleFemaleData = {
 			labels : ["Married","Unmarried"],
 			datasets : [
@@ -83,6 +111,22 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					strokeColor : "rgba(220,220,220,0.8)",
 					highlightFill: "rgba(220,220,220,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor()]
+				}
+			]
+	
+		}
+
+
+			var dataWillingtoPayforJobInfo = {
+			labels : ["YES","NO"],
+			datasets : [
+				
+				{	
+					fillColor : "rgba(247, 108, 127, 0.2)",
+					strokeColor : "rgba(247, 108, 127, 0.8)",
+					highlightFill : "rgba(247, 108, 127, 0.75)",
+					highlightStroke : "rgba(247, 108, 127, 1)",
 					data : [randomScalingFactor(),randomScalingFactor()]
 				}
 			]
@@ -113,7 +157,7 @@ var dataThreearea = {
 };
 
 var chart04 = document.getElementById("chart-agedist").getContext("2d");
-var myBarChart = new Chart(chart04).Bar(dataThreearea);
+var myBarChart = new Chart(chart04).Bar(dataThreearea , {responsive: true});
 
 
 // inserting the new dataset after 3 seconds
@@ -155,6 +199,7 @@ setTimeout(function() {
 
 //three area graph
 
+
 //area chart starts 
 	var datasetforagedistarea = {
   labels: ["40+yr", "35-39yr", "30-34yr", "25-29yr", "20-24yr", "15-19yr"],
@@ -193,6 +238,113 @@ var optionsforagedistarea = {
   animationEasing : "easeOutBounce",
   animateRotate : true,
   animateScale : true,
+};
+
+	//linear bar chart data
+
+	
+
+	var dataWillingtoPayage = {
+    labels: ["15-19year", "20-24year", "25-29year", "30+year"],
+    datasets: [
+           {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }, {
+            label: "My Second dataset",
+            fillColor: "rgba(247, 108, 127, 0.2)",
+            strokeColor: "rgba(247, 108, 127, 1)",
+            pointColor: "rgba(247, 108, 127, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+	var dataWillingtoSpendAgeByMoney = {
+    labels: ["0 Taka", "Upto 20 Taka", "Taka 21-30", "Taka 31-40", "Taka 41-50", "Taka 51-100", "Taka 100+"],
+    datasets: [
+           {
+            label: "30+",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }, {
+            label: "25-29",
+            fillColor: "rgba(247, 108, 127, 0.2)",
+            strokeColor: "rgba(247, 108, 127, 1)",
+            pointColor: "rgba(247, 108, 127, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor() ]
+        }, {
+            label: "20-24",
+            fillColor: "rgba(255, 136, 17, 0.2)",
+            strokeColor: "rgba(255, 136, 17, 1)",
+            pointColor: "rgba(255, 136, 17, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }, {
+            label: "15-9",
+            fillColor: "rgba(101, 183, 38, 0.2)",
+            strokeColor: "rgba(101, 183, 38, 1)",
+            pointColor: "rgba(101, 183, 38, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }
+    ]
+};
+
+	var SourceOfCurrentJobInfoData = {
+    labels: ["SignBoard", "Own Initiative", "Leaflet", "Known People", "Training Center", "Teacher", "Miking", "Colleague", "Factory Gate", "Website", "Newspaper", 
+    "Neighbour", "Friends", "Cable Tv",, "Radio",, "Family"],
+    datasets: [
+           {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }
+    ]
+};
+	var JobInfoInGData = {
+    labels: ["Mobile", "Relative", "SignBoard", "Factory", "Website", "Colleague", "Neighbour", "Friends" ],
+    datasets: [
+           {
+            label: "My Second dataset",
+            fillColor: "rgba(247, 108, 127, 0.2)",
+            strokeColor: "rgba(247, 108, 127, 1)",
+            pointColor: "rgba(247, 108, 127, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor()]
+        }
+    ]
 };
 
 
@@ -282,28 +434,63 @@ var optionsforagedistarea = {
 			
 	var doughnutData = [
 					{
-						value: 300,
+						value: randomScalingFactor(),
 						color:"#30a5ff",
 						highlight: "#62b9fb",
 						label: "Blue"
 					},
 					{
-						value: 50,
+						value: randomScalingFactor(),
 						color: "#ffb53e",
 						highlight: "#fac878",
 						label: "Orange"
 					},
 					{
-						value: 100,
+						value: randomScalingFactor(),
 						color: "#1ebfae",
 						highlight: "#3cdfce",
 						label: "Teal"
 					},
 					{
-						value: 120,
+						value: randomScalingFactor(),
 						color: "#f9243f",
 						highlight: "#f6495f",
 						label: "Red"
+					}
+	
+				];
+
+
+			var avgLengthOfPresentJobData = [
+					{
+						value: randomScalingFactor(),
+						color:"#30a5ff",
+						highlight: "#62b9fb",
+						label: "1-2years"
+					},
+					{
+						value: randomScalingFactor(),
+						color: "#ffb53e",
+						highlight: "#fac878",
+						label: "2-3years"
+					},
+					{
+						value: randomScalingFactor(),
+						color: "#1ebfae",
+						highlight: "#3cdfce",
+						label: "3-4years"
+					},
+					{
+						value: randomScalingFactor(),
+						color: "#f9243f",
+						highlight: "#f6495f",
+						label: "4-5years"
+					},
+					{
+						value: randomScalingFactor(),
+						color: "#44AF69",
+						highlight: "#51D17E",
+						label: "5-10years"
 					}
 	
 				];
@@ -416,17 +603,26 @@ var radarOptions = {
 	
 }
 	var radarData = {
-	labels : ["January","February","March","April","May","June","July"],
+	labels : ["GP","Robi","Banglalink","Teletalk","Citycell","Airtel"],
 	datasets : [
-		{
-			fillColor : "rgba(220,220,220,0.5)",
-			strokeColor : "rgba(220,220,220,1)",
-			data : [65,59,90,81,56,55,40]
+		{	
+
+			fillColor : "rgba(255, 136, 17, 0.5)",
+			strokeColor : "rgba(255, 136, 17, 1)",
+			// highlight:  "rgba(255, 136, 17, 1)",
+			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
 		},
-		{
+		{	
 			fillColor : "rgba(151,187,205,0.5)",
 			strokeColor : "rgba(151,187,205,1)",
-			data : [28,48,40,19,96,27,100]
+			// highlight:  "rgba(151,187,205,1)",
+			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+		},
+		{	
+			fillColor : "rgba(101, 183, 38, 0.5))",
+			strokeColor : "rgba(101, 183, 38, 1)",
+			// highlight:  "rgba(101, 183, 38, 1)",
+			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
 		}
 	]
 }
@@ -470,17 +666,85 @@ window.onload = function(){
 
 	var chart05 = document.getElementById("pie-chartforEdu").getContext("2d");
 	window.myPie = new Chart(chart05).Pie(pieData3, {responsive : true
-	}); //this is chart 2 {respondent page}
+	}); //this is chart 5 {respondent page}
+
+	var chart06 = document.getElementById("jobStatus-bar").getContext("2d");
+	window.myBar = new Chart(chart06).Bar(jobstatusData, {
+		responsive : true
+	}); //this is chart 6 {respondent page}
+
+	
+	// var chart07 = document.getElementById("pie-chartForAvgLengthOfPresentJob").getContext("2d");
+	// window.myPie = new Chart(chart07).Pie(avgLengthOfPresentJobData, {responsive : true
+	// }); //this is chart 7 {respondent page}
+
+
+	var chart07 = document.getElementById("pie-chartForAvgLengthOfPresentJob").getContext("2d");
+	window.myDoughnut = new Chart(chart07).Doughnut(avgLengthOfPresentJobData, {responsive : true
+	}); //this is chart 7 {respondent page}
+
+
+
+	var chart08 = document.getElementById("line-willingPayJobInfo").getContext("2d");
+	window.myBar = new Chart(chart08).Bar(dataWillingtoPayforJobInfo, {
+		responsive : true
+	}); //this is chart 08 dataWillingtoPayforJobInfo {respondent page}
+
+
+
+
+	var chart09 = document.getElementById("line-sourceOfCurrentJob").getContext("2d");
+	window.myLineChart = new Chart(chart09).Line(SourceOfCurrentJobInfoData, {responsive : true
+	}); //this is chart 9 {respondent page}
+
+
+
+
+	var chart10 = document.getElementById("line-JobInfoInG").getContext("2d");
+	window.myLineChart = new Chart(chart10).Line(JobInfoInGData, {responsive : true
+	}); //this is chart 10 {respondent page}
+
+
+
+var chart11 = document.getElementById("line-priorApplyJob").getContext("2d");
+	window.myBar = new Chart(chart11).Bar(priorApplyJobData, {
+		responsive : true
+	}); //this is chart 11 {respondent page}
+
+	var chart12 = document.getElementById("line-willingtoPayInAge").getContext("2d");
+	window.myBar = new Chart(chart12).Line(dataWillingtoPayage, {
+		responsive : true
+	}); //this is chart 12 {respondent page}
+
+	
+var chart13 = document.getElementById("line-willingtoSpendAgeByMoney").getContext("2d");
+	window.myBar = new Chart(chart13).Line(dataWillingtoSpendAgeByMoney, {
+		responsive : true
+	}); //this is chart 13 {respondent page}
+
+	
+	var chart14 = document.getElementById("line-subsTelOp").getContext("2d");
+
+// Create the Radar Chart
+	var myRadarChart = new Chart(chart14).Radar(radarData, radarOptions, {responsive: true});  //this is chart 14 {respondent page}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 	//from here
-	var ctx = document.getElementById("radarChart").getContext("2d");
-
-// Create the Radar Chart
-	var myRadarChart = new Chart(ctx).Radar(radarData, radarOptions);
 
 	//till here radar chart
 

@@ -726,7 +726,7 @@ var chart13 = document.getElementById("line-willingtoSpendAgeByMoney").getContex
 	var chart14 = document.getElementById("line-subsTelOp").getContext("2d");
 
 // Create the Radar Chart
-	var myRadarChart = new Chart(chart14).Radar(radarData, radarOptions, {responsive: true});  //this is chart 14 {respondent page}
+	var myRadarChart = new Chart(chart14).Radar(radarData, {responsive: true});  //this is chart 14 {respondent page}
 
 
 

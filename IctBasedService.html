@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Respondent - Dashboard</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+<script src="js/lumino.glyphs.js"></script>
+
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>Edge</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li ><a href="respondent.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Respondent Status</a></li>
+			<li class="active"><a href="IctBasedService.html"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg> ICT Based Info</a></li>
+
+			
+			<li role="presentation" class="divider"></li>
+			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+		</ul>
+		<div class="attribution">Template by <a href="#">Sazib</a><br/></div>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active">Respondent's ICT Information</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">ICT Based Information</h1>
+				
+			</div>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Rural Penetration</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="bar-RuralPenetration" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:#65bcff">in (%)</span>  </div>
+				</div>
+			</div>
+		
+
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Internet Usage</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="PieYearByUserIntUsage" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:#65bcff"> Year/User</span>  </div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">Internet Usage </div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="PieYearBypopulationIntUsage" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:#65bcff"> Year/Population</span>  </div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">Internet Usage </div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="PieYearbyPenetationIntUsage" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:#65bcff"> Year/% of Penetration</span>  </div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">Internet Usage</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="PieYearbyGDPIntUsage" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:#65bcff"> Year/GDP</span>  </div>
+				</div>
+			</div>
+		<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Computer Usage Across Gender in (%)</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="compUsageAccGend-line" height="300" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">Male</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">Female</span>  </div>
+				</div>
+			</div>
+
+		<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Computer Usage Across Age in (%)</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="compUsageAccAge-line" height="300" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">30+Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">25-29 Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(48, 39, 173,1)">20-24 Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(43, 130, 28,1)">15-19 Yr</span>  </div>
+				</div>
+			</div>
+
+			<div class="col-md-5">
+				<div class="panel panel-default">
+					<div class="panel-heading">Fimilarity With Internet</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="FimilarityInt-bar" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">Male</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">Female</span> </div>
+			</div>
+			</div>
+
+
+			<div class="col-md-7">
+				<div class="panel panel-default">
+					<div class="panel-heading">Mode Of Internet Access</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="ModeOfintAccess-bar" height="140" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">Own Computer</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">Work Computer</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(48, 39, 173,1)">Mobile Phone</span>  </div>
+			</div>
+			</div>
+
+				<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Monthly Expendature On Vas</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="monlyVasExpendature-line" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">UP TO 20Taka</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">21-30 Taka</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(48, 39, 173,1)">31-50 Taka</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(43, 130, 28,1) ">50+ Taka</span> </div>
+			</div>
+			</div>
+
+				<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Radio Use Frequency (%)</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="RadioUsageFrquency-bar" height="200" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">Yes</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">No</span></div>
+			</div>
+			</div>
+
+			
+
+				<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Information need from LMIS</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="lims-bar-Long" height="350" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">Yes</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">Need to Work</span></div>
+			</div>
+			</div>
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Preference on the Medium for Job Info (%) </div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="PrefOnMediumForJobInfo" height="330" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center">Most Said<span style="color:rgba(219, 41, 41,1)"> Newspaper</span></div>
+			</div>
+			</div>
+
+				<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Age wise Distribution on Media For Job info</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="agewisedistribution-bar" height="250" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">30+Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">25-29Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(48, 39, 173,1)">20-24Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(43, 130, 28,1) ">15-19Yr</span> </div>
+			</div>
+			</div>
+
+				<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Age-wise preference on Info medium</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="agewisePrefOnInfo-line" height="250" width="600"></canvas>
+						</div>
+					</div>
+					<div class="panel-heading text-center"><span style="color:rgba(151,187,205,1)">30+Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(219, 41, 41,1)">25-29Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(48, 39, 173,1)">20-24Yr</span> &nbsp; &nbsp; &nbsp; <span style="color:rgba(43, 130, 28,1) ">15-19Yr</span> </div>
+			</div>
+			</div>
+
+
+
+		
+<!-- this html data stored here and ron windows load -->
+		<script type="text/javascript">
+			var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
+			//init random no;
+
+			var dataRuralPenetration = {
+			labels : ["Khulna","Rajshahi","Rangpur","Chittagong","Dhaka"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(48, 164, 255, 0.2)",
+					strokeColor :  "rgba(48, 164, 255, 1)",
+					pointColor : "rgba(48, 164, 255, 1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				},
+				
+			]
+
+		}
+
+
+
+			var YearPerUserInternetUsage = [
+				{
+					value: randomScalingFactor(),
+					color:"#30a5ff",
+					highlight: "#62b9fb",
+					label: "2000"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#ffb53e",
+					highlight: "#fac878",
+					label: "2007"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#1ebfae",
+					highlight: "#3cdfce",
+					label: "2009"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#f9243f",
+					highlight: "#f6495f",
+					label: "2010"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#B0FE76",
+					highlight: "#C5FF99",
+					label: "2011"
+				}
+
+			];
+
+
+			var YearPerPopuInternetUsage = [
+				{
+					value: randomScalingFactor(),
+					color:"#30a5ff",
+					highlight: "#62b9fb",
+					label: "2000"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#ffb53e",
+					highlight: "#fac878",
+					label: "2007"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#1ebfae",
+					highlight: "#3cdfce",
+					label: "2009"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#f9243f",
+					highlight: "#f6495f",
+					label: "2010"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#B0FE76",
+					highlight: "#C5FF99",
+					label: "2011"
+				}
+
+			];
+
+			var YearPerPenetationInternetUsage = [
+				{
+					value: randomScalingFactor(),
+					color:"#30a5ff",
+					highlight: "#62b9fb",
+					label: "2000"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#ffb53e",
+					highlight: "#fac878",
+					label: "2007"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#1ebfae",
+					highlight: "#3cdfce",
+					label: "2009"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#f9243f",
+					highlight: "#f6495f",
+					label: "2010"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#B0FE76",
+					highlight: "#C5FF99",
+					label: "2011"
+				}
+
+			];
+
+			var YearPerGDPInternetUsage = [
+				{
+					value: randomScalingFactor(),
+					color:"#30a5ff",
+					highlight: "#62b9fb",
+					label: "2000"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#ffb53e",
+					highlight: "#fac878",
+					label: "2007"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#1ebfae",
+					highlight: "#3cdfce",
+					label: "2009"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#f9243f",
+					highlight: "#f6495f",
+					label: "2010"
+				},
+				{
+					value: randomScalingFactor(),
+					color: "#B0FE76",
+					highlight: "#C5FF99",
+					label: "2011"
+				}
+
+			];
+
+
+			var CompUsageAccGender = {
+    labels: ["For Training","Download","Training","Work Related","Social Network","News","Entertainment"],
+    datasets: [
+           {
+            label: "Male",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        },
+        {
+            label: "Female",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+            randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }
+    ]
+};
+
+
+
+	var CompUsageAccAge = {
+    labels: ["For Training","Download","Training","Work Related","Social Network","News","Entertainment"],
+    datasets: [
+           {
+            label: "30+",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+        {
+            label: "25-29+",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "20-24+",
+            fillColor: "rgba(48, 39, 173,0.2)",
+            strokeColor: "rgba(48, 39, 173,1)",
+            pointColor: "rgba(48, 39, 173,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(48, 39, 173,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "15-19+",
+            fillColor: "rgba(43, 130, 28,0.2)",
+            strokeColor: "rgba(43, 130, 28,1)",
+            pointColor: "rgba(43, 130, 28,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(43, 130, 28,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+
+		var FimilarityWithIntData = {
+    labels: ["Yes","No"],
+    datasets: [
+           {
+            label: "Male",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor()]
+        },
+        {
+            label: "Female",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor()]
+        }
+    ]
+};
+
+
+
+var ModeOfIntAccessData = {
+    labels: ["30+Yr","25-29Yr","20-24Yr","15-19Yr"],
+    datasets: [
+           {
+            label: "Own",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+        {
+            label: "WorkComputer",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "MobilePhone",
+            fillColor: "rgba(48, 39, 173,0.2)",
+            strokeColor: "rgba(48, 39, 173,1)",
+            pointColor: "rgba(48, 39, 173,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(48, 39, 173,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+var monlyVasExpendatureData = {
+    labels: ["30+Yr","25-29Yr","20-24Yr","15-19Yr"],
+    datasets: [
+           {
+            label: "20tk+",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+        {
+            label: "21-30",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "31-50",
+            fillColor: "rgba(48, 39, 173,0.2)",
+            strokeColor: "rgba(48, 39, 173,1)",
+            pointColor: "rgba(48, 39, 173,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(48, 39, 173,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "50+",
+            fillColor: "rgba(43, 130, 28,0.2)",
+            strokeColor: "rgba(43, 130, 28,1)",
+            pointColor: "rgba(43, 130, 28,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(43, 130, 28,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }
+    ]
+};
+
+var RadioUsageFrquencydata = {
+    labels: ["30+Yr","25-29Yr","20-24Yr","15-19Yr"],
+    datasets: [
+           {
+            label: "Yes",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+        {
+            label: "No",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+var PrefOnMediumForJobInfodata = {
+    labels: ["SMS","Print","Phone","TV/Radio","Internet","Banner","Miking","From Employer",,"Training Services","Poster","Neighbour","Colleague","Newspaper","No Response"],
+    datasets: [
+           {
+            label: "Yes",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+var agewisedistributionData = {
+    labels: ["SMS","Print","Phone","TV","Internet",],
+      datasets: [
+           {
+            label: "30+",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+        {
+            label: "25-29",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "20-24",
+            fillColor: "rgba(48, 39, 173,0.2)",
+            strokeColor: "rgba(48, 39, 173,1)",
+            pointColor: "rgba(48, 39, 173,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(48, 39, 173,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "15-19",
+            fillColor: "rgba(43, 130, 28,0.2)",
+            strokeColor: "rgba(43, 130, 28,1)",
+            pointColor: "rgba(43, 130, 28,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(43, 130, 28,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+
+var agewisePrefOnInfoData = {
+    labels: ["91-100","71-90","51-70","41-50","31-40","21-30","Upto 20","Won't Spend"],
+      datasets: [
+           {
+            label: "30+",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+        {
+            label: "25-29",
+            fillColor: "rgba(219, 41, 41,0.2)",
+            strokeColor: "rgba(219, 41, 41,1)",
+            pointColor: "rgba(219, 41, 41,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(219, 41, 41,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "20-24",
+            fillColor: "rgba(48, 39, 173,0.2)",
+            strokeColor: "rgba(48, 39, 173,1)",
+            pointColor: "rgba(48, 39, 173,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(48, 39, 173,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        },
+         {
+            label: "15-19",
+            fillColor: "rgba(43, 130, 28,0.2)",
+            strokeColor: "rgba(43, 130, 28,1)",
+            pointColor: "rgba(43, 130, 28,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(43, 130, 28,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+
+var LimsData = {
+    labels: ["On Job Training","Law of Labour","Insurance System","Security System","Salary Inc Info","Mobile Bil Provide","House rent Facility","Any TA/TD","Medical Allowence","Rules & Regulation","Salary payment Schedule","Experiance Requrement","Educational Requirement","Job Qualification","About Employer/Owner","Security Money Requirement","Job Parmanent/temporary","Amout of people Recruited","Other Facility","No Of Holiday","Bonus","Transport Info","Work Env","OT work Scope","Job Type","Working Hour","Worplace Info","Salary Info"],
+      datasets: [
+           {
+            label: "30+",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),]
+        }
+    ]
+};
+
+
+
+
+		window.onload = function(){
+
+	var chart001 = document.getElementById("bar-RuralPenetration").getContext("2d");
+	window.myBar = new Chart(chart001).Bar(dataRuralPenetration, {
+		responsive : true
+	}); //this is chart 1 {ICT page}
+
+
+var chart002 = document.getElementById("PieYearByUserIntUsage").getContext("2d");
+	window.myPie = new Chart(chart002).Pie(YearPerUserInternetUsage, {responsive : true
+	}); ///this is chart 2 {ICT page}
+
+
+var chart003 = document.getElementById("PieYearBypopulationIntUsage").getContext("2d");
+	window.myPie = new Chart(chart003).Pie(YearPerPopuInternetUsage, {responsive : true
+	}); ///this is chart 3 {ICT page}
+
+
+var chart004 = document.getElementById("PieYearbyPenetationIntUsage").getContext("2d");
+	window.myPie = new Chart(chart004).Pie(YearPerPenetationInternetUsage, {responsive : true
+	}); ///this is chart 4 {ICT page}
+
+
+var chart005 = document.getElementById("PieYearbyGDPIntUsage").getContext("2d");
+	window.myPie = new Chart(chart005).Pie(YearPerGDPInternetUsage, {responsive : true
+	}); ///this is chart 5 {ICT page}
+
+
+
+var chart006 = document.getElementById("compUsageAccGend-line").getContext("2d");
+	window.myLineChart = new Chart(chart006).Line(CompUsageAccGender, {responsive : true
+	}); //this is chart 6 {ICT page}
+
+
+
+	var chart007 = document.getElementById("compUsageAccAge-line").getContext("2d");
+	window.myBar = new Chart(chart007).Bar(CompUsageAccAge, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+var chart008 = document.getElementById("FimilarityInt-bar").getContext("2d");
+	window.myBar = new Chart(chart008).Bar(FimilarityWithIntData
+, {
+		responsive : true
+	}); //this is chart 8 {ICT page}
+
+	var chart009 = document.getElementById("ModeOfintAccess-bar").getContext("2d");
+	window.myBar = new Chart(chart009).Bar(ModeOfIntAccessData, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+	var chart010 = document.getElementById("monlyVasExpendature-line").getContext("2d");
+	window.myLine = new Chart(chart010).Line(monlyVasExpendatureData, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+
+	var chart011 = document.getElementById("RadioUsageFrquency-bar").getContext("2d");
+	window.myBar = new Chart(chart011).Bar(RadioUsageFrquencydata, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+var chart012 = document.getElementById("lims-bar-Long").getContext("2d");
+	window.myBar = new Chart(chart012).Bar(LimsData, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+		var chart013 = document.getElementById("PrefOnMediumForJobInfo").getContext("2d");
+	window.myLine = new Chart(chart013).Line(PrefOnMediumForJobInfodata, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+var chart014 = document.getElementById("agewisedistribution-bar").getContext("2d");
+	window.myBar = new Chart(chart014).Bar(agewisedistributionData, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+	var chart015 = document.getElementById("agewisePrefOnInfo-line").getContext("2d");
+	window.myLine = new Chart(chart015).Line(agewisePrefOnInfoData, {
+		responsive : true
+	}); //this is chart 7 {ICT page}
+
+
+
+};
+		</script>
+
+			<!-- will update more -->
+
+	<!-- <div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Maritial Status of the Job Seekers Surveyed (in %)</div>
+					<div class="panel-body">
+						<div class="canvas-wrapper">
+							<canvas class="main-chart" id="radarChart" height="200" width="600"></canvas>
+						</div>
+					</div>
+				<div class="panel-heading text-center"><span style="color:#65bcff">Male</span> &nbsp; &nbsp; &nbsp; <span style="color:#ccc">Female</span>  </div>
+				</div>
+			</div> -->
+
+
+
+
+
+
+
+
+
+
+			
+		</div><!--/.row respondent by Gender and area -->
+
+		
+		
+	
+											
+	</div>	<!--/.main-->
+	  
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script>
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+
+</html>

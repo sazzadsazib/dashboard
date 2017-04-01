@@ -81,6 +81,8 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 	
 		}
 
+		
+
 		var priorApplyJobData = {
 			labels : ["Working Hr","Salary","Security","WorkPlace Location","No Of People Recruited","Work Enviroment","Yearly Bonus","Other Facility","How Many Days Leave","Nature Of Job","At What date Salary is Paid","Amount Of OverTime"],
 			datasets : [
@@ -723,6 +725,13 @@ var chart13 = document.getElementById("line-willingtoSpendAgeByMoney").getContex
 	}); //this is chart 13 {respondent page}
 
 	
+
+	//ICT based Inforamtion starts here
+
+
+
+
+
 	var chart14 = document.getElementById("line-subsTelOp").getContext("2d");
 
 // Create the Radar Chart
